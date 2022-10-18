@@ -1,0 +1,72 @@
+<section class="form">
+  <div class="form__container">
+    <ul class="form__form-group">
+      <li>
+        <span>
+          <strong> Rezervuaro apskaičiavimas </strong>
+        </span>
+      </li>
+      <li>
+        <div class="form__input-group">
+          <label for="capacity">Rezervuaro talpa (l)</label>
+          <input
+            type="number"
+            class="input"
+            id="capacity"
+            [(ngModel)]="capacity"
+          />
+        </div>
+      </li>
+      <li>
+        <div class="form__input-group">
+          <label for="speed">Pildymo greitis (l/val.)</label>
+          <input type="number" class="input" id="speed" [(ngModel)]="speed" />
+        </div>
+      </li>
+      <li>
+        <div class="form__input-group">
+          <label for="time">Pildymo laikas (val.)</label>
+          <input type="number" class="input" id="time" [(ngModel)]="time" />
+        </div>
+      </li>
+      <li>
+        <div class="form__input-group">
+          <button type="submit" class="button" (click)="onSubmit()">
+            Apskaičiuoti rezervuarą
+          </button>
+        </div>
+      </li>
+    </ul>
+    <section
+      (click)="hideAlert()"
+      class="alert__warn"
+      *ngIf="status === 'warn'"
+    >
+      <strong>Rezervuaro talpa kritiškai perpildyta:</strong> {{ percentages }}
+    </section>
+
+    <section
+      (click)="hideAlert()"
+      class="alert__risk"
+      *ngIf="status === 'risk'"
+    >
+      <strong>Rezervuaro talpa yra perpildyta:</strong> {{ percentages }}
+    </section>
+
+    <section
+      (click)="hideAlert()"
+      class="alert__success"
+      *ngIf="status === 'success'"
+    >
+      <strong>Rezervuaro talpa:</strong> {{ percentages }}
+    </section>
+
+    <section
+      (click)="allFieldsRequired = false"
+      class="alert__info"
+      *ngIf="allFieldsRequired"
+    >
+      <strong>Visi laukeliai privalomi</strong>
+    </section>
+  </div>
+</section>
